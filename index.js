@@ -6,11 +6,23 @@ import { createClient } from 'redis';
 
 
 const app = express()
-const port = 8081
+const port = process.env.PORT ?? 8081
 
-const redisClient = createClient();
-redisClient.on('error', (err) => console.log('Redis Client Error', err));
-await redisClient.connect();
+//const redisClient = createClient();
+//redisClient.on('error', (err) => console.log('Redis Client Error', err));
+//await redisClient.connect();
+
+const cache = {}
+
+const redisClient = {
+    set(key, val) {
+        cache[key] = val
+    },
+
+    get(key) {
+        return cache[key] ?? null
+    }
+}
 
 let sankakuClient = new Client();
 
