@@ -93,15 +93,15 @@ app.get('/post/index.json', async (req, res) => {
 
         if(ip.sample_url) {
             redisClient.set(`post-${ip.id}-sample_url`, ip.sample_url)
-            p.sample_url = 'https://f3de-86-85-131-160.eu.ngrok.io/image/' + ip.id + '/sample_url'
+            p.sample_url = 'https://skk2booru.herokuapp.com/image/' + ip.id + '/sample_url'
         }
         if(ip.preview_url) {
             redisClient.set(`post-${ip.id}-preview_url`, ip.preview_url)
-            p.preview_url = 'https://f3de-86-85-131-160.eu.ngrok.io/image/' + ip.id + '/preview_url'
+            p.preview_url = 'https://skk2booru.herokuapp.com/image/' + ip.id + '/preview_url'
         }
         if(ip.file_url) {
             redisClient.set(`post-${ip.id}-file_url`, ip.file_url)
-            p.file_url = 'https://f3de-86-85-131-160.eu.ngrok.io/image/' + ip.id + '/file_url'
+            p.file_url = 'https://skk2booru.herokuapp.com/image/' + ip.id + '/file_url'
         }
 
         p.created_at = (new Date(ip.created_at.s * 1000)).toDateString();
